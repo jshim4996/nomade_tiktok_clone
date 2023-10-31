@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 import 'package:tiktok_clone/features/authentication/widgets/form_button.dart';
+import 'package:tiktok_clone/features/onBoarding/intersts_screen.dart';
 
 class BirthdayScreen extends StatefulWidget {
   const BirthdayScreen({super.key});
@@ -38,6 +39,15 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
   void _setTextFiedlDate(DateTime date) {
     final textDate = date.toString().split(' ').first;
     _birthdayComtorller.value = TextEditingValue(text: textDate);
+  }
+
+  void _onNextPage() {
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(
+        builder: (context) => const InterstsScreen(),
+      ),
+      (route) => false,
+    );
   }
 
   @override
@@ -91,6 +101,7 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
               ),
               Gaps.v16,
               GestureDetector(
+                onTap: _onNextPage,
                 child: const FormButton(
                   disabled: false,
                   title: 'Next',
