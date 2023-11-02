@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 import 'package:tiktok_clone/features/videos/widgets/video_button.dart';
+import 'package:tiktok_clone/features/videos/widgets/video_comment.dart';
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -76,7 +77,9 @@ class _VideoPostState extends State<VideoPost>
   }
 
   void _onVisibilityChanged(VisibilityInfo info) {
-    if (info.visibleFraction == 1 && !_videoPlayerController.value.isPlaying) {
+    if (info.visibleFraction == 1 &&
+        !_ispaused &&
+        !_videoPlayerController.value.isPlaying) {
       _videoPlayerController.play();
     }
   }
@@ -92,6 +95,19 @@ class _VideoPostState extends State<VideoPost>
     setState(() {
       _ispaused = !_ispaused;
     });
+  }
+
+  void _onCommentTap(BuildContext context) async {
+    if (_videoPlayerController.value.isPlaying) {
+      _onTogglePause();
+    }
+    await showModalBottomSheet(
+      context: context,
+      builder: (context) => const VideoComment(),
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+    );
+    _onTogglePause();
   }
 
   @override
@@ -127,7 +143,7 @@ class _VideoPostState extends State<VideoPost>
                   // child: Transform.scale(
                   // scale: _animationController.value,
                   child: AnimatedOpacity(
-                    opacity: _ispaused ? 0 : 1,
+                    opacity: _ispaused ? 1 : 0,
                     duration: _animationDuration,
                     child: const FaIcon(
                       FontAwesomeIcons.play,
@@ -165,12 +181,12 @@ class _VideoPostState extends State<VideoPost>
               ],
             ),
           ),
-          const Positioned(
+          Positioned(
             bottom: 20,
             right: 10,
             child: Column(
               children: [
-                CircleAvatar(
+                const CircleAvatar(
                   radius: 25,
                   backgroundColor: Colors.black,
                   foregroundColor: Colors.white,
@@ -179,17 +195,20 @@ class _VideoPostState extends State<VideoPost>
                   child: Text('joon'),
                 ),
                 Gaps.v20,
-                VideoButton(
+                const VideoButton(
                   icon: FontAwesomeIcons.solidHeart,
                   text: '2.2',
                 ),
                 Gaps.v20,
-                VideoButton(
-                  icon: FontAwesomeIcons.solidComment,
-                  text: '33k',
+                GestureDetector(
+                  onTap: () => _onCommentTap(context),
+                  child: const VideoButton(
+                    icon: FontAwesomeIcons.solidComment,
+                    text: '33k',
+                  ),
                 ),
                 Gaps.v20,
-                VideoButton(
+                const VideoButton(
                   icon: FontAwesomeIcons.share,
                   text: 'Share',
                 ),
