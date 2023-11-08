@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
+import 'package:tiktok_clone/features/discover/discover_screen.dart';
 import 'package:tiktok_clone/features/main_naigation/widgets/nav_tab.dart';
 import 'package:tiktok_clone/features/main_naigation/widgets/post_viedo_button.dart';
 import 'package:tiktok_clone/features/main_naigation/widgets/stf_screen.dart';
 import 'package:tiktok_clone/features/videos/video_timeline_screen.dart';
+import 'package:tiktok_clone/inbox/inbox_screen.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
@@ -16,7 +18,7 @@ class MainNavigationScreen extends StatefulWidget {
 }
 
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 3;
 
   final screen = [
     const Center(
@@ -68,11 +70,11 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           ),
           Offstage(
             offstage: _selectedIndex != 1,
-            child: Container(),
+            child: const DiscoverScreen(),
           ),
           Offstage(
             offstage: _selectedIndex != 3,
-            child: Container(),
+            child: const InboxScreen(),
           ),
           Offstage(
             offstage: _selectedIndex != 4,
@@ -81,7 +83,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         ],
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.black,
+        color: _selectedIndex == 0 ? Colors.black : Colors.white,
         child: Padding(
           padding: const EdgeInsets.all(Sizes.size12),
           child: Row(
@@ -94,6 +96,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                 icon: FontAwesomeIcons.house,
                 selectedIcon: FontAwesomeIcons.house,
                 onTab: () => _onTap(0),
+                selecedIndex: _selectedIndex,
               ),
               NavTap(
                 text: 'Discover',
@@ -101,11 +104,14 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                 icon: FontAwesomeIcons.compass,
                 selectedIcon: FontAwesomeIcons.solidCompass,
                 onTab: () => _onTap(1),
+                selecedIndex: _selectedIndex,
               ),
               Gaps.h24,
               GestureDetector(
                 onTap: _onPostViedeoButtonTap,
-                child: const PostViedeoButton(),
+                child: PostViedeoButton(
+                  inverted: _selectedIndex != 0,
+                ),
               ),
               Gaps.h24,
               NavTap(
@@ -114,6 +120,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                 icon: FontAwesomeIcons.message,
                 selectedIcon: FontAwesomeIcons.solidMessage,
                 onTab: () => _onTap(3),
+                selecedIndex: _selectedIndex,
               ),
               NavTap(
                 text: 'Profile',
@@ -121,6 +128,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                 icon: FontAwesomeIcons.user,
                 selectedIcon: FontAwesomeIcons.solidUser,
                 onTab: () => _onTap(4),
+                selecedIndex: _selectedIndex,
               ),
             ],
           ),
