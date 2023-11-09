@@ -34,7 +34,7 @@ class TikTokApp extends StatelessWidget {
                 fontSize: Sizes.size16 + Sizes.size2,
                 fontWeight: FontWeight.w600,
               ))),
-      home: const ActivityScreen(),
+      home: const MainNavigationScreen(),
     );
   }
 }
