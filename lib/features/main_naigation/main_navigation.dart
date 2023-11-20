@@ -8,8 +8,8 @@ import 'package:tiktok_clone/features/main_naigation/widgets/nav_tab.dart';
 import 'package:tiktok_clone/features/main_naigation/widgets/post_viedo_button.dart';
 import 'package:tiktok_clone/features/main_naigation/widgets/stf_screen.dart';
 import 'package:tiktok_clone/features/videos/video_timeline_screen.dart';
-import 'package:tiktok_clone/inbox/inbox_screen.dart';
-import 'package:tiktok_clone/user/user_profile_screen.dart';
+import 'package:tiktok_clone/features/inbox/inbox_screen.dart';
+import 'package:tiktok_clone/features/user/user_profile_screen.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});

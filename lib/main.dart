@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
+import 'package:tiktok_clone/features/authentication/widgets/login_form_screen.dart';
 import 'package:tiktok_clone/features/main_naigation/main_navigation.dart';
 import 'package:tiktok_clone/features/onBoarding/intersts_screen.dart';
 import 'package:tiktok_clone/features/authentication/sign_up_screen.dart';
-import 'package:tiktok_clone/inbox/activity_screen.dart';
+import 'package:tiktok_clone/features/inbox/activity_screen.dart';
 
 void main() {
   runApp(const TikTokApp());
