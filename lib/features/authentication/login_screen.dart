@@ -5,9 +5,11 @@ import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 import 'package:tiktok_clone/features/authentication/widgets/auth_button.dart';
 import 'package:tiktok_clone/features/authentication/widgets/login_form_screen.dart';
+import 'package:tiktok_clone/features/onBoarding/intersts_screen.dart';
 
 class LoginScreen extends StatefulWidget {
-  static const routeName = '/login';
+  static const routeUrl = '/login';
+  static const routeName = 'login';
 
   const LoginScreen({super.key});
 
@@ -17,14 +19,15 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   void _onSignUpTap(BuildContext context) {
-    // Navigator.of(context).pop();
     context.pop();
   }
 
   void _onEmailLoginTap(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => const LoginFormScreen(),
-    ));
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const LoginFormScreen(),
+      ),
+    );
   }
 
   @override

@@ -4,6 +4,9 @@ import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 
 class ActivityScreen extends StatefulWidget {
+  static const String routeName = 'activity';
+  static const String routeUrl = '/activity';
+
   const ActivityScreen({super.key});
 
   @override
@@ -45,7 +48,7 @@ class _ActivityScreenState extends State<ActivityScreen>
 
   late final AnimationController _animationController = AnimationController(
     vsync: this,
-    duration: const Duration(milliseconds: 300),
+    duration: const Duration(seconds: 300),
   );
 
   late final Animation<double> _arrowAnimation = Tween(

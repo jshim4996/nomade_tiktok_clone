@@ -39,10 +39,18 @@ class _UserNameState extends State<UserName> {
 
   void _onNextTap() {
     if (_username.isEmpty) return;
-    context.pushNamed(
-      EmailScreen.routeName,
-      extra: EmailScreenArgs(username: _username),
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => EmailScreen(
+          username: _username,
+        ),
+      ),
     );
+    // context.pushNamed(
+    //   EmailScreen.routeName,
+    //   extra: EmailScreenArgs(username: _username),
+    // );
     // Navigator.pushNamed(
     //   context,
     //   EmailScreen.routeName,
