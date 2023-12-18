@@ -8,9 +8,9 @@ import 'package:tiktok_clone/features/discover/discover_screen.dart';
 import 'package:tiktok_clone/common/widget/main_naigation/widgets/nav_tab.dart';
 import 'package:tiktok_clone/common/widget/main_naigation/widgets/post_viedo_button.dart';
 import 'package:tiktok_clone/common/widget/main_naigation/widgets/stf_screen.dart';
-import 'package:tiktok_clone/features/videos/video_timeline_screen.dart';
 import 'package:tiktok_clone/features/inbox/inbox_screen.dart';
 import 'package:tiktok_clone/features/user/user_profile_screen.dart';
+import 'package:tiktok_clone/features/videos/views/video_timeline_screen.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   static const String routeName = 'navigator';

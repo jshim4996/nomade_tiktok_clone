@@ -12,7 +12,7 @@ import 'package:tiktok_clone/features/onBoarding/intersts_screen.dart';
 import 'package:tiktok_clone/features/user/user_profile_screen.dart';
 
 final router = GoRouter(
-  initialLocation: "/",
+  initialLocation: "/home",
   routes: [
     GoRoute(
       name: SignUpScreen.routeName,

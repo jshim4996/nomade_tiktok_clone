@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:tiktok_clone/common/video_configuration/video_configuration.dart';
+import 'package:tiktok_clone/features/videos/view_models/playback_config_mv.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({super.key});
@@ -46,13 +48,50 @@ class _SettingScreenState extends State<SettingScreen> {
             //   value: _notification,
             //   onChanged: _onChangeNotification,
             // ),
+            // SwitchListTile.adaptive(
+            //   value: VideoConfigData.of(context).autoMute,
+            //   onChanged: (value) {
+            //     VideoConfigData.of(context).changeAutoMute();
+            //   },
+            //   title: const Text('Auto Mute'),
+            //   subtitle: const Text('videos will be muted by default'),
+            // ),
+            // AnimatedBuilder(
+            //   animation: videoConfig,
+            //   builder: (context, child) => SwitchListTile.adaptive(
+            //     value: videoConfig.value,
+            //     onChanged: (value) {
+            //       videoConfig.value = !videoConfig.value;
+            //     },
+            //     title: const Text('Auto Mute'),
+            //     subtitle: const Text('videos will be muted by default'),
+            //   ),
+            // ),
+            // ValueListenableBuilder(
+            //   valueListenable: videoConfig,
+            //   builder: (context, value, child) =>
+            // SwitchListTile.adaptive(
+            //     value: videoConfig.value,
+            //     onChanged: (value) {
+            //       videoConfig.value = !videoConfig.value;
+            //     },
+            //     title: const Text('Auto Mute'),
+            //     subtitle: const Text('videos will be muted by default'),
+            //   ),
+            // ),
             SwitchListTile.adaptive(
-              value: VideoConfigData.of(context).autoMute,
-              onChanged: (value) {
-                VideoConfigData.of(context).changeAutoMute();
-              },
+              value: context.watch<PlaybakConfigViewModel>().muted,
+              onChanged: (value) =>
+                  context.read<PlaybakConfigViewModel>().setMuted(value),
               title: const Text('Auto Mute'),
               subtitle: const Text('videos will be muted by default'),
+            ),
+            SwitchListTile.adaptive(
+              value: context.watch<PlaybakConfigViewModel>().autoplay,
+              onChanged: (value) =>
+                  context.read<PlaybakConfigViewModel>().setAutoplay(value),
+              title: const Text('Auto play'),
+              subtitle: const Text('videos will be play by default'),
             ),
             CheckboxListTile(
               // checkColor: Colors.black,
